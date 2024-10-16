@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "clean",
+      "type": "shell",
+      "command": "rm -rf build",
+      "group": "build"
+    },
+    {
+      "label": "prepare",
+      "type": "shell",
+      "command": "cmake -S . -B build",
+      "group": "build",
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "cmake --build build",
+      "group": "build",
+      "dependsOn": "prepare"
+    },
+    {
+      "label": "clean:build",
+      "type": "shell",
+      "command": "cmake --build build",
+      "group": "build",
+      "dependsOn": ["clean", "prepare"],
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "Test Converters",
+      "type": "shell",
+      "command": "${workspaceRoot}/build/run-tests",
+      "group": "none",
+      "dependsOn": "build",
+      "problemMatcher": [],
+    },
+    {
+      "label": "Start Application",
+      "type": "shell",
+      "command": "${workspaceRoot}/build/main",
+      "group": "none",
+      "dependsOn": "build",
+      "problemMatcher": [],
+    }
+  ]
+}

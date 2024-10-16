@@ -1,0 +1,21 @@
+{
+  "name": "GitHub Copilot C++ v1.5",
+  "version": 1,
+
+  "lifecycle": {
+    "warning": 7,
+    "terminate": 14
+  },
+
+  "resources": [
+    "github"
+  ],
+
+  "framework": {
+    "variant": "terraform",
+
+    "terraform": {
+      "stack_path": ".demo/terraform"
+    }
+  }
+}
